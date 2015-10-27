@@ -67,13 +67,16 @@ export HISTCONTROL=erasedups
 lsb_release -a
 umask 022
 
-cmatrix  -b -C cyan -u 6
+color=("green" "red" "blue" "white" "yellow" "cyan" "magenta" "black")
+index=$(($RANDOM % 8))
+cmatrix -C ${color[$index]} -u 6
 
 #export LANG=en_GB.ISO-8859-1@euro
 uname -a
 date
 
 #Enable core dump
-#echo "----- ULIMIT -----"
+echo
+echo "------------------ ULIMIT LAYOUT -------------------"
 ulimit -c unlimited
 ulimit -a
