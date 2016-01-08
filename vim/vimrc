@@ -1,0 +1,28 @@
+" Incarntion P. Lee personal vim configuration file.
+" Create at: Fri Jan  8 21:25:53 CST 2016
+syntax on
+
+set nocompatible                 " Disable the compatible for vi
+set showcmd		         " Show (partial) command in status line.
+set showmatch                    " Show matching brackets.
+set smartcase		         " Do smart case matching
+set incsearch                    " Incremental search
+set cursorline                   " show a underline at current line
+set nu
+set nowrap                       " disable new line
+set noswapfile                   " do not generate .swp file
+set cursorcolumn
+set ruler
+set hls
+set scrolloff=3
+set matchtime=1
+set magic
+set laststatus=2
+set t_Co=256                     " use 256 color in vim
+set background=dark
+set shell=bash
+set completeopt=longest,menu
+set backspace=start
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+
+

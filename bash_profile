@@ -41,6 +41,7 @@ alias rm='rm -v'
 alias mv='mv -v'
 alias cp='cp -v'
 alias mkdir='mkdir -v'
+alias s='sudo'
 
 PATH="/bin:/usr/bin:/sbin/:/usr/sbin:/usr/local/bin"
 PATH=$PATH":/opt/bin/:/opt/intel/vtune_amplifier_xe/bin64/:/home/pli/intel/sep_3.16_linux_414852/bin64/"
