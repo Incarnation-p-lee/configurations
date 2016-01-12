@@ -42,6 +42,10 @@ syntax keyword marco #elsif defined
 highlight marco ctermfg=60
 highlight link macro_cnd macro
 
+" charactor
+syntax match char /'[0-9a-z]'/
+highlight char ctermfg=177
+
 " structure & union & enum
 syntax match struct_inline contained /\(struct\|union\|enum\) \w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \w*[ ),{]/hs=s+4,he=e-1
@@ -97,8 +101,10 @@ syntax match number "0x[0-9a-fA-F]\+"
 highlight number ctermfg=196
 
 " function
-syntax match function "[a-zA-Z_]\w*("he=e-1
-highlight function ctermfg=33 cterm=bold
+syntax match symbol_func /##/ contained
+syntax match function "[a-zA-Z_]\(\w\|#\)*("he=e-1 contains=symbol_func
+highlight function ctermfg=33
+highlight symbol_func ctermfg=118
 
 " label
 syntax match label "\w\+:"
@@ -118,8 +124,7 @@ highlight assembly ctermfg=114
 highlight args ctermfg=117
 highlight inline_assembly ctermfg=125
 
-" marco workaround
-syntax match marco_workaround display "[A-Z]\+[0-9]*_\?[A-Z_0-9a-z]*"
-highlight marco_workaround ctermfg=22
-
+" ## symbol
+syntax match symbol /##/
+highlight symbol ctermfg=118
 
