@@ -21,6 +21,7 @@ syntax keyword type bool boolean uint16_t int16_t uint32_t int32_t
 syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8 sint8
 syntax keyword type uint64_t int64_t size_t 
 syntax keyword type size_t ssize_t false true asm
+syntax match type_def / \w*_t$/
 syntax match type_def / \w*_t /
 highlight type ctermfg=40
 highlight link type_def type
@@ -38,7 +39,7 @@ syntax match macro_cnd /#if/
 syntax match macro_cnd /#endif/
 syntax match macro_cnd /#else/
 syntax keyword marco #define #ifdef #ifndef #defined
-syntax keyword marco #elsif defined
+syntax keyword marco #elsif defined #undef
 highlight marco ctermfg=60
 highlight link macro_cnd macro
 
