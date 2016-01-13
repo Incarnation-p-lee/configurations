@@ -97,9 +97,13 @@ syntax match operation "--"
 highlight operation ctermfg=154
 
 " number
-syntax match number "[0-9]\+\.\?[0-9]*"
-syntax match number "0x[0-9a-fA-F]\+"
+syntax match number " [0-9]\+\.\?[0-9]*"
+syntax match number " 0x[0-9a-fA-F]\+"
 highlight number ctermfg=196
+
+" Predefined macro
+syntax keyword predef NULL __FILE__ __LINE__ __FUNCTION__
+highlight predef ctermfg=197
 
 " function
 syntax match symbol_func /##/ contained
