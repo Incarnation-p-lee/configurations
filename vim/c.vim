@@ -97,8 +97,8 @@ syntax match operation "--"
 highlight operation ctermfg=154
 
 " number
-syntax match number " [0-9]\+\.\?[0-9]*"
-syntax match number " 0x[0-9a-fA-F]\+"
+syntax match number "[( ][0-9]\+\.\?[0-9]*"hs=s+1
+syntax match number "[( ]0x[0-9a-fA-F]\+"hs=s+1
 highlight number ctermfg=196
 
 " Predefined macro
