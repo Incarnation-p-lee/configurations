@@ -22,7 +22,7 @@ syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8
 syntax keyword type uint64_t int64_t size_t 
 syntax keyword type size_t ssize_t false true asm
 syntax match type_def / \w*_t$/
-syntax match type_def / \w*_t /
+syntax match type_def /[ (]\w*_t[ )]/hs=s+1,he=e-1
 highlight type ctermfg=40
 highlight link type_def type
 
@@ -76,7 +76,7 @@ highlight link comment_1 comment
 
 " pointer
 syntax match pointer "\*\{1,3\}\w\+"
-syntax match pointer "&\w\+"
+syntax match pointer "&[(]\?\w\+"
 syntax match pointer "->\w\+"
 syntax match pointer "\.\w\+"
 highlight pointer ctermfg=202
