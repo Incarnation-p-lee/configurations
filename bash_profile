@@ -13,17 +13,26 @@ HISTSIZE=40960
 HISTTIMEFORMAT="%Y/%m/%d %T "
 FCEDIT=vi
 
-PS1="\
+function last_cmd_line {
+    last_cmd=$(history 1 | cut -d ' ' -f5-)
+}
+
+PROMPT_COMMAND=last_cmd_line
+
+PS1='\
 \[\033[0;32m\]<\#>\
 \[\033[0;36m\]\u\
 \[\033[0;35m\][\!]\
 \[\033[0;34m\]@\
 \[\033[0;33m\]\w\
 \[\033[1;34m\]*\j*\
-\[\033[1;36m\]#\d^\t#\
+\[\033[1;36m\][\t \d]\
+\[\033[1;31m\]#$?#\
+\[\033[1;35m\]< $last_cmd >\
 \[\033[00m\]\[\e[0;31m\]\n>> \
 \[\e[m\]\[\e[0;00m\]\
-"
+'
+
 PS2="\
 \[\033[1;32m\]cont. >> \
 \[\e[m\]\[\e[0;00m\]\
@@ -45,15 +54,13 @@ alias s='sudo'
 alias gdb='gdb -q'
 
 PATH="/bin:/usr/bin:/sbin/:/usr/sbin:/usr/local/bin"
-PATH=$PATH":/opt/bin/:/opt/intel/vtune_amplifier_xe/bin64/:/home/pli/intel/sep_3.16_linux_414852/bin64/"
-PATH=$PATH":/home/pli/Archive/package/android-ndk-r10d/"
-PATH=$PATH":/home/pli/Archive/package/gcc-linaro-aarch64-linux-gnu-4.8-2014.04_linux/bin"
+PATH="$PATH:/home/pli/bin/sep/bin64:/home/pli/workspace/houdini/dev-tools/icc13.0/bin-13_0-x86linux"
 #CDPATH=.:~:/etc:/var:~/workspace
 LD_LIBRARY_PATH="/lib64/usr/:/usr/local/lib:/home/pli/intel/sep_3.16_linux_414852/bin64/"
 
 #export CDPATH
-#export LC_ALL=en_US.UTF-8
-#export LANG=en_US.UTF-8
+#export LC_ALL=C
+#export -n LANG=C
 #export LANG=
 #export LC_ALL=
 export LD_LIBRARY_PATH
