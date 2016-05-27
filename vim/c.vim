@@ -21,10 +21,11 @@ syntax keyword type bool boolean uint16_t int16_t uint32_t int32_t
 syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8 sint8
 syntax keyword type uint64_t int64_t size_t 
 syntax keyword type size_t ssize_t false true asm
-syntax match type_def / \w*_t$/
-syntax match type_def /[ (]\w*_t[ )]/hs=s+1,he=e-1
+syntax match type_def_0 / \w*_t$/
+syntax match type_def_1 /\w*_t[) ]/he=e-1
 highlight type ctermfg=40
-highlight link type_def type
+highlight link type_def_0 type
+highlight link type_def_1 type
 
 " keyword in C
 syntax keyword keyword_basic break case const continue default do else
