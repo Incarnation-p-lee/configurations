@@ -7,17 +7,38 @@ set +o ignoreeof
 set +o noclobber
 set +o nounset
 shopt -s cdable_vars
+shopt -s histappend
 #shopt -s checkhash
 
 HISTSIZE=40960
-HISTTIMEFORMAT="%Y/%m/%d %T "
 FCEDIT=vi
 
 function last_cmd_line {
-    last_cmd=$(history 1 | cut -d ' ' -f5-)
+    last_cmd=$(history 1 | cut -d ' ' -f6-)
 }
 
-PROMPT_COMMAND=last_cmd_line
+function timer_start {
+    timer_start=${timer_start:-$SECONDS}
+}
+
+function timer_end {
+    timer_layout=""
+    timer_cost=$(($SECONDS - $timer_start))
+    if [ $timer_cost -ge 3600 ]; then
+        timer_layout="$(($timer_cost / 3600))h"
+        timer_cost=$(($timer_cost % 3600))
+    fi
+    if [ $timer_cost -ge 60 ]; then
+        timer_layout="$timer_layout$(($timer_cost / 60))m"
+        timer_cost=$(($timer_cost % 60))
+    fi
+    timer_layout="${timer_layout}${timer_cost}s"
+    unset timer_start
+}
+
+trap 'timer_start' DEBUG
+
+PROMPT_COMMAND='last_cmd_line; timer_end'
 
 PS1='\
 \[\033[0;32m\]<\#>\
@@ -25,9 +46,10 @@ PS1='\
 \[\033[0;35m\][\!]\
 \[\033[0;34m\]@\
 \[\033[0;33m\]\w\
-\[\033[1;34m\]*\j*\
 \[\033[1;36m\][\t \d]\
+\[\033[1;34m\]*\j*\
 \[\033[1;31m\]#$?#\
+\[\033[1;32m\][$timer_layout]\
 \[\033[1;35m\]< $last_cmd >\
 \[\033[00m\]\[\e[0;31m\]\n>> \
 \[\e[m\]\[\e[0;00m\]\
@@ -67,7 +89,7 @@ export LD_LIBRARY_PATH
 export JAVA_HOME=/usr/bin/jdk1.6.0_32
 export PATH
 export SVN_EDITOR=vi
-export HISTCONTROL=ignoredups
+#export HISTCONTROL=ignoredups
 export HISTCONTROL=erasedups
 #Enable some services
 #sshd
