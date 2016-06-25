@@ -22,10 +22,12 @@ syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8
 syntax keyword type uint64_t int64_t size_t 
 syntax keyword type size_t ssize_t false true asm
 syntax match type_def_0 / \w*_t$/
-syntax match type_def_1 /\w*_t[) ]/he=e-1
+syntax match type_def_1 /\w*_t[) ;]/he=e-1
+syntax match type_def_2 /^\w*_t$/
 highlight type ctermfg=40
 highlight link type_def_0 type
 highlight link type_def_1 type
+highlight link type_def_2 type
 
 " keyword in C
 syntax keyword keyword_basic break case const continue default do else
@@ -52,9 +54,11 @@ highlight char ctermfg=177
 syntax match struct_inline contained /\(struct\|union\|enum\) \w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \w*[ ),{]/hs=s+4,he=e-1
 syntax match struct /\(struct\|union\|enum\) [a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
+syntax match struct_typedef /s_\w\+_t/
 highlight struct_inline ctermfg=93
 highlight link enum_inline struct_inline
 highlight struct ctermfg=23
+highlight link struct_typedef struct_inline
 
 " include
 syntax match included contained /#include .*/hs=s+9
