@@ -47,8 +47,8 @@ highlight marco ctermfg=60
 highlight link macro_cnd macro
 
 " charactor
-syntax match char /'[0-9a-z]'/
-highlight char ctermfg=177
+syntax match char /'[0-9A-Za-z~`!@#$%^&*()-=_+|\?><,./]'/
+highlight char ctermfg=196
 
 " structure & union & enum
 syntax match struct_inline contained /\(struct\|union\|enum\) \w*[ ),{]/hs=s+6,he=e-1
@@ -58,7 +58,7 @@ syntax match struct_typedef /s_\w\+_t/
 highlight struct_inline ctermfg=93
 highlight link enum_inline struct_inline
 highlight struct ctermfg=23
-highlight link struct_typedef struct_inline
+highlight link struct_typedef struct
 
 " include
 syntax match included contained /#include .*/hs=s+9
