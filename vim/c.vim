@@ -47,14 +47,16 @@ highlight marco ctermfg=60
 highlight link macro_cnd macro
 
 " charactor
-syntax match char /'[0-9A-Za-z~`!@#$%^&*()-=_+|\?><,./]'/
+syntax match char /'[0-9A-Za-z~`!@#$%^&*()-=_+|\?><,./\[\]\(\)]'/
+syntax match addressing /[\[\]]/
 highlight char ctermfg=196
+highlight addressing ctermfg=196
 
 " structure & union & enum
 syntax match struct_inline contained /\(struct\|union\|enum\) \w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \w*[ ),{]/hs=s+4,he=e-1
 syntax match struct /\(struct\|union\|enum\) [a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
-syntax match struct_typedef /s_\w\+_t/
+syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
 highlight struct_inline ctermfg=93
 highlight link enum_inline struct_inline
 highlight struct ctermfg=23
