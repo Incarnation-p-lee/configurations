@@ -24,6 +24,7 @@ set shell=bash
 set completeopt=longest,menu
 set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set foldmethod=marker            " zf% mark pair () [] {}
 
 highlight CursorColumn ctermbg=235
 " Auto jump to the line when last exiting file
