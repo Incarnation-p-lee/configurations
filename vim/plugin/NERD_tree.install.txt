@@ -1,0 +1,7 @@
+unzip NERD_tree.zip to ~/.vim
+== Add folow lines to vimrc ==
+nmap <F10> :NERDTreeMirror<CR>
+nmap <F10> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=20
+== End ==
+
