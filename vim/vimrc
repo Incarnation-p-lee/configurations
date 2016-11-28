@@ -42,10 +42,11 @@ let g:tagbar_width=25
 nmap <F9> :TagbarToggle<CR>
 
 " NERD_tree
-nmap <F10> :NERDTreeMirror<CR>
-nmap <F10> :NERDTreeToggle<CR>
+" nmap <F10> :NERDTreeMirror<CR>
+nmap <silent> <F10> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=20
-let g:NERDTreeWinPos='right'
+let g:NERDTreeWinPos='left'
+let g:NERDChristmasTree=1
 
 " Ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
