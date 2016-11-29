@@ -1,0 +1,5 @@
+vi supertab.vmb
+:so %
+
+vimrc
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
