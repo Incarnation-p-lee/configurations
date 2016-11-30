@@ -21,7 +21,6 @@ set laststatus=2
 set t_Co=256                     " use 256 color in vim
 set background=dark
 set shell=bash
-set completeopt=longest,menu
 set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
@@ -38,16 +37,14 @@ autocmd BufReadPost *
 
 " Plugin for vim
 " Tagbar
-let g:tagbar_width=25
+let g:tagbar_width=30
 nmap <F9> :TagbarToggle<CR>
 
-" NERD_tree
-" nmap <F10> :NERDTreeMirror<CR>
-nmap <silent> <F10> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=20
-let g:NERDTreeWinPos='left'
-let g:NERDChristmasTree=1
-
-" Ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" clang complete
+let g:clang_debug=1
+let g:clang_library_path='/usr/lib/x86_64-linux-gnu/'
+set completeopt=longest,menu
+" let g:clang_use_library = 1
+" let g:clang_complete_copen = 1
+" let g:clang_user_options='|| exit 0'
 
