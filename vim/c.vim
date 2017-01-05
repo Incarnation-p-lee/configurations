@@ -12,6 +12,8 @@ highlight Folded ctermbg=239 ctermfg=88
 " set cursorcolumn color
 highlight CursorColumn ctermbg=233
 
+let b:current_syntax = "c"
+
 "
 " Keyword
 "
@@ -20,7 +22,7 @@ syntax keyword type int double short float long unsigned signed char void
 syntax keyword type bool boolean uint16_t int16_t uint32_t int32_t
 syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8 sint8
 syntax keyword type uint64_t int64_t size_t 
-syntax keyword type size_t ssize_t false true asm
+syntax keyword type size_t ssize_t false true asm inline
 syntax match type_def_0 / \w*_t$/
 syntax match type_def_1 /\w*_t[) ;]/he=e-1
 syntax match type_def_2 /^\w*_t$/
@@ -33,8 +35,8 @@ highlight link type_def_2 type
 syntax keyword keyword_basic break case const continue default do else
 syntax keyword keyword_basic extern for goto if register restrict
 syntax keyword keyword_basic return sizeof static switch typedef
-syntax keyword keyword_basic volatile while auto inline
-highlight keyword_basic ctermfg=199
+syntax keyword keyword_basic volatile while auto
+highlight keyword_basic ctermfg=126
 
 setlocal iskeyword +=#
 " macro
@@ -53,13 +55,13 @@ highlight char ctermfg=196
 highlight addressing ctermfg=196
 
 " structure & union & enum
-syntax match struct_inline contained /\(struct\|union\|enum\) \w*[ ),{]/hs=s+6,he=e-1
-syntax match enum_inline contained /enum \w*[ ),{]/hs=s+4,he=e-1
-syntax match struct /\(struct\|union\|enum\) [a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
+syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*[ ),{]/hs=s+6,he=e-1
+syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
+syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
-highlight struct_inline ctermfg=93
+highlight struct_inline ctermfg=64
 highlight link enum_inline struct_inline
-highlight struct ctermfg=23
+highlight struct ctermfg=99
 highlight link struct_typedef struct
 
 " include
@@ -86,7 +88,7 @@ syntax match pointer "\*\{1,3\}\w\+"
 syntax match pointer "&[(]\?\w\+"
 syntax match pointer "->\w\+"
 syntax match pointer "\.\w\+"
-highlight pointer ctermfg=202
+highlight pointer ctermfg=45
 
 " operation
 syntax match operation " [?:+=\-\*/&|~%^] "
@@ -101,7 +103,7 @@ syntax match operation " >>=\? "
 syntax match operation " <<=\? "
 syntax match operation " &&=\? "
 syntax match operation "--"
-highlight operation ctermfg=154
+highlight operation ctermfg=208
 
 " number
 syntax match number "[0-9]\+\.\?[0-9]*"
