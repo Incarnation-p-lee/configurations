@@ -36,7 +36,7 @@ syntax keyword keyword_basic break case const continue default do else
 syntax keyword keyword_basic extern for goto if register restrict
 syntax keyword keyword_basic return sizeof static switch typedef
 syntax keyword keyword_basic volatile while auto
-highlight keyword_basic ctermfg=126
+highlight keyword_basic ctermfg=124
 
 setlocal iskeyword +=#
 " macro
@@ -54,6 +54,12 @@ syntax match addressing /[\[\]]/
 highlight char ctermfg=196
 highlight addressing ctermfg=196
 
+" macros
+" \< -> \b
+" \> -> \b
+syntax match macro_defined /\<[A-Z_]\+\>/
+highlight macro_defined ctermfg=130
+
 " structure & union & enum
 syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
@@ -61,7 +67,7 @@ syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
 highlight struct_inline ctermfg=64
 highlight link enum_inline struct_inline
-highlight struct ctermfg=99
+highlight struct ctermfg=105
 highlight link struct_typedef struct
 
 " include
@@ -74,7 +80,7 @@ highlight included ctermfg=100
 syntax match string_format contained /%#\?\d\{0,3\}\.\?\d\{0,3\}l\{0,2\}[a-zA-Z]/
 syntax region string start="\"" end="\"" contains=string_format
 highlight string_format ctermfg=23
-highlight string ctermfg=197
+highlight string ctermfg=196
 
 " comments
 syntax match comment "//.*"
@@ -88,7 +94,7 @@ syntax match pointer "\*\{1,3\}\w\+"
 syntax match pointer "&[(]\?\w\+"
 syntax match pointer "->\w\+"
 syntax match pointer "\.\w\+"
-highlight pointer ctermfg=45
+highlight pointer ctermfg=202
 
 " operation
 syntax match operation " [?:+=\-\*/&|~%^] "
@@ -103,7 +109,7 @@ syntax match operation " >>=\? "
 syntax match operation " <<=\? "
 syntax match operation " &&=\? "
 syntax match operation "--"
-highlight operation ctermfg=208
+highlight operation ctermfg=165
 
 " number
 syntax match number "[0-9]\+\.\?[0-9]*"
