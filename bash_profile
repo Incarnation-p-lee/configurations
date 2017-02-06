@@ -14,7 +14,7 @@ HISTSIZE=40960
 FCEDIT=vi
 
 function last_cmd_line {
-    last_cmd=$(history 1 | cut -d ' ' -f6-)
+    last_cmd=$(history 1 | cut -d ' ' -f4-)
 }
 
 function timer_start {
@@ -80,34 +80,14 @@ PATH="$PATH:/home/pli/bin/sep/bin64:/home/pli/workspace/houdini/dev-tools/icc13.
 #CDPATH=.:~:/etc:/var:~/workspace
 LD_LIBRARY_PATH="/lib64/usr/:/usr/local/lib:/home/pli/intel/sep_3.16_linux_414852/bin64/"
 
+export LD_LIBRARY_PATH
+export PATH
 #export CDPATH
 #export LC_ALL=C
 #export -n LANG=C
 #export LANG=
 #export LC_ALL=
-export LD_LIBRARY_PATH
-export JAVA_HOME=/usr/bin/jdk1.6.0_32
-export PATH
 export SVN_EDITOR=vi
-#export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups
 export HISTCONTROL=erasedups
-#Enable some services
-#sshd
 
-#Release information
-lsb_release -a
-umask 022
-
-color=("green" "red" "blue" "white" "yellow" "cyan" "magenta" "black")
-index=$(($RANDOM % 8))
-cmatrix -C ${color[$index]} -u 6
-
-#export LANG=en_GB.ISO-8859-1@euro
-uname -a
-date
-
-#Enable core dump
-echo
-echo "------------------ ULIMIT LAYOUT -------------------"
-ulimit -c unlimited
-ulimit -a
