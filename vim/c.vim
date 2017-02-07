@@ -57,7 +57,7 @@ highlight addressing ctermfg=196
 " macros
 " \< -> \b
 " \> -> \b
-syntax match macro_defined /\<[A-Z_]\+\>/
+syntax match macro_defined /\<[A-Z_0-9]\+\>/
 highlight macro_defined ctermfg=130
 
 " structure & union & enum
