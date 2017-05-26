@@ -74,20 +74,26 @@ alias cp='cp -v'
 alias mkdir='mkdir -v'
 alias s='sudo'
 alias gdb='gdb -q'
+alias py='python'
+alias pl='perl'
 
 PATH="/bin:/usr/bin:/sbin/:/usr/sbin:/usr/local/bin"
-PATH="$PATH:/home/pli/bin/sep/bin64:/home/pli/workspace/houdini/dev-tools/icc13.0/bin-13_0-x86linux"
-#CDPATH=.:~:/etc:/var:~/workspace
-LD_LIBRARY_PATH="/lib64/usr/:/usr/local/lib:/home/pli/intel/sep_3.16_linux_414852/bin64/"
+PATH="$PATH:/home/pli/bin"
+LD_LIBRARY_PATH="/lib64/usr/:/usr/local/lib"
+JAVA_HOME="/home/pli/bin/jdk/jdk1.8.0_121/"
 
+#CDPATH=.:~:/etc:/var:~/workspace
+
+export JAVA_HOME
 export LD_LIBRARY_PATH
 export PATH
+export SVN_EDITOR=vi
+export HISTCONTROL=ignoredups
+export HISTCONTROL=erasedups
+export PAGER='most'
+
 #export CDPATH
 #export LC_ALL=C
 #export -n LANG=C
 #export LANG=
 #export LC_ALL=
-export SVN_EDITOR=vi
-export HISTCONTROL=ignoredups
-export HISTCONTROL=erasedups
-
