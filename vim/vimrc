@@ -24,6 +24,7 @@ set shell=bash
 set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
+set colorcolumn=81
 
 highlight CursorColumn ctermbg=235
 highlight Pmenu ctermbg=darkgrey ctermfg=black
@@ -34,17 +35,4 @@ autocmd BufReadPost *
    \ if line("'\"") > 0 && line("'\"") <= line("$") |
    \     exe "normal g'\"" |
    \ endif
-
-" Plugin for vim
-" Tagbar
-let g:tagbar_width=30
-nmap <F9> :TagbarToggle<CR>
-
-" clang complete
-let g:clang_debug=1
-let g:clang_library_path='/usr/lib/x86_64-linux-gnu/'
-set completeopt=longest,menu
-" let g:clang_use_library = 1
-" let g:clang_complete_copen = 1
-" let g:clang_user_options='|| exit 0'
 
