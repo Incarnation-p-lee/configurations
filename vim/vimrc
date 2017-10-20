@@ -25,10 +25,13 @@ set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=81
+set tabstop=4                    " tab stop at 4 space
+set list listchars=tab:>.
 
 highlight CursorColumn ctermbg=235
 highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=blue
+highlight SpecialKey ctermfg=238 ctermbg=black
 
 " Auto jump to the line when last exiting file
 autocmd BufReadPost *
