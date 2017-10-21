@@ -137,7 +137,7 @@ syn keyword     goFloats            float32 float64
 syn keyword     goComplexes         complex64 complex128
 
 " function
-syntax match function ".\?[a-zA-Z_]*("he=e-1
+syntax match function ".\?[a-zA-Z_][a-zA-Z_0-9]*("he=e-1
 highlight function ctermfg=33
 
 hi def link     goType              Type
