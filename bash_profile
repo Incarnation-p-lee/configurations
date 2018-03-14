@@ -1,8 +1,4 @@
-SHELL=/bin/bash
-EDITOR=/usr/bin/vi
-
 set -o vi
-
 set +o ignoreeof
 set +o noclobber
 set +o nounset
@@ -14,7 +10,11 @@ HISTSIZE=40960
 FCEDIT=vi
 
 function last_cmd_line {
-    last_cmd=$(history 1 | cut -d ' ' -f4-)
+    last_cmd=$(history 1 | cut -d ' ' -f5-)
+}
+
+function git_branch_name {
+    git_branch=$(git branch | grep "*" | cut -d ' ' -f2-)
 }
 
 function timer_start {
@@ -38,7 +38,7 @@ function timer_end {
 
 trap 'timer_start' DEBUG
 
-PROMPT_COMMAND='last_cmd_line; timer_end'
+PROMPT_COMMAND='last_cmd_line; timer_end; git_branch_name'
 
 PS1='\
 \[\033[0;32m\]<\#>\
@@ -50,7 +50,8 @@ PS1='\
 \[\033[1;34m\]*\j*\
 \[\033[1;31m\]#$?#\
 \[\033[1;32m\][$timer_layout]\
-\[\033[1;35m\]< $last_cmd >\
+\[\033[3;36m\]<$git_branch>\
+\[\033[1;35m\]"$last_cmd"\
 \[\033[00m\]\[\e[0;31m\]\n>> \
 \[\e[m\]\[\e[0;00m\]\
 '
@@ -76,24 +77,3 @@ alias s='sudo'
 alias gdb='gdb -q'
 alias py='python'
 alias pl='perl'
-
-PATH="/bin:/usr/bin:/sbin/:/usr/sbin:/usr/local/bin"
-PATH="$PATH:/home/pli/bin"
-LD_LIBRARY_PATH="/lib64/usr/:/usr/local/lib"
-JAVA_HOME="/home/pli/bin/jdk/jdk1.8.0_121/"
-
-#CDPATH=.:~:/etc:/var:~/workspace
-
-export JAVA_HOME
-export LD_LIBRARY_PATH
-export PATH
-export SVN_EDITOR=vi
-export HISTCONTROL=ignoredups
-export HISTCONTROL=erasedups
-export PAGER='most'
-
-#export CDPATH
-#export LC_ALL=C
-#export -n LANG=C
-#export LANG=
-#export LC_ALL=
