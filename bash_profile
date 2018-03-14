@@ -10,7 +10,7 @@ HISTSIZE=40960
 FCEDIT=vi
 
 function last_cmd_line {
-    last_cmd=$(history 1 | cut -d ' ' -f5-)
+    last_cmd=$(history 1 | cut -d ' ' -f5- | sed "s/ *$//g" | sed "s/^ *//g")
 }
 
 function git_branch_name {
@@ -41,17 +41,17 @@ trap 'timer_start' DEBUG
 PROMPT_COMMAND='last_cmd_line; timer_end; git_branch_name'
 
 PS1='\
-\[\033[0;32m\]<\#>\
-\[\033[0;36m\]\u\
-\[\033[0;35m\][\!]\
-\[\033[0;34m\]@\
-\[\033[0;33m\]\w\
-\[\033[1;36m\][\t \d]\
-\[\033[1;34m\]*\j*\
-\[\033[1;31m\]#$?#\
-\[\033[1;32m\][$timer_layout]\
+\[\033[0;32m\]<\#/\!>\
 \[\033[3;36m\]<$git_branch>\
-\[\033[1;35m\]"$last_cmd"\
+\[\033[1;31m\]\u\
+\[\033[0;34m\]^\
+\[\033[0;33m\]\w\
+\[\033[0;34m\]@\
+\[\033[0;36m\]<\t \d>\
+\[\033[1;31m\][$?]\
+\[\033[1;34m\]*\j*\
+\[\033[1;32m\][$timer_layout]\
+\[\033[3;35m\]"$last_cmd"\
 \[\033[00m\]\[\e[0;31m\]\n>> \
 \[\e[m\]\[\e[0;00m\]\
 '
