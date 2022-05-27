@@ -10,14 +10,14 @@ HISTSIZE=40960
 FCEDIT=vi
 
 function last_cmd_line {
-    last_cmd=$(history 1 | cut -d ' ' -f5- | sed "s/ *$//g" | sed "s/^ *//g")
+    last_cmd=$(history 1 | cut -d ' ' -f4- | sed "s/ *$//g" | sed "s/^ *//g")
 }
 
 function git_branch_name {
-    git_branch="n/a"
+    git_branch=$(git branch 2>/dev/null | grep "*" | cut -d ' ' -f2-)
 
-    if [[ -d ".git" ]]; then
-        git_branch=$(git branch | grep "*" | cut -d ' ' -f2-)
+    if [[ "${git_branch}" == "" ]]; then
+        git_branch="n/a"
     fi
 
     git_branch=${git_branch}
@@ -83,3 +83,5 @@ alias s='sudo'
 alias gdb='gdb -q'
 alias py='python'
 alias pl='perl'
+export EDITOR=vi
+
