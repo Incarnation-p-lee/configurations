@@ -1,11 +1,10 @@
 " Incarntion P. Lee personal vim configuration file.
 " Create at: Fri Jan  8 21:25:53 CST 2016
 syntax on
-
 set nocompatible                 " Disable the compatible for vi
-set showcmd		         " Show (partial) command in status line.
+set showcmd                      " Show (partial) command in status line.
 set showmatch                    " Show matching brackets.
-set smartcase		         " Do smart case matching
+set smartcase                    " Do smart case matching
 set incsearch                    " Incremental search
 set cursorline                   " show a underline at current line
 set nu
@@ -24,7 +23,7 @@ set shell=bash
 set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
-set colorcolumn=81
+set colorcolumn=101
 set tabstop=4                    " tab stop at 4 space
 set list listchars=tab:>.
 
