@@ -1,6 +1,5 @@
-" Incarntion P. Lee personal vim configuration file.
-" Create at: Fri Jan  8 21:25:53 CST 2016
 syntax on
+
 set nocompatible                 " Disable the compatible for vi
 set showcmd                      " Show (partial) command in status line.
 set showmatch                    " Show matching brackets.
@@ -27,10 +26,15 @@ set colorcolumn=101
 set tabstop=4                    " tab stop at 4 space
 set list listchars=tab:>.
 
+" Highlights
 highlight CursorColumn ctermbg=235
 highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=blue
 highlight SpecialKey ctermfg=238 ctermbg=black
+
+" Highlight the tail whitespace
+highlight tailwhitespace ctermbg=196
+match tailwhitespace /\s\+$/
 
 " Auto jump to the line when last exiting file
 autocmd BufReadPost *
