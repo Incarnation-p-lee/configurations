@@ -24,7 +24,9 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=101
 set tabstop=4                    " tab stop at 4 space
-set list listchars=tab:>.
+set listchars=tab:..,trail:^,extends:>,precedes:<
+set spell spelllang=en_us
+set autochdir
 
 " Highlights
 highlight CursorColumn ctermbg=235
@@ -32,13 +34,10 @@ highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=blue
 highlight SpecialKey ctermfg=238 ctermbg=black
 
-" Highlight the tail whitespace
-highlight tailwhitespace ctermbg=196
-match tailwhitespace /\s\+$/
-
 " Auto jump to the line when last exiting file
 autocmd BufReadPost *
    \ if line("'\"") > 0 && line("'\"") <= line("$") |
    \     exe "normal g'\"" |
    \ endif
 
+colorscheme delek
