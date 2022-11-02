@@ -24,9 +24,8 @@ set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\
 set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=101
 set tabstop=4                    " tab stop at 4 space
-set listchars=tab:..,trail:^,extends:>,precedes:<
+set list listchars=tab:..,trail:^,extends:>,precedes:<
 set spell spelllang=en_us
-set autochdir
 
 " Highlights
 highlight CursorColumn ctermbg=235
@@ -40,4 +39,4 @@ autocmd BufReadPost *
    \     exe "normal g'\"" |
    \ endif
 
-colorscheme delek
+colorscheme torte
