@@ -23,12 +23,12 @@ set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=101
-set tabstop=4                    " tab stop at 4 space
+set tabstop=8                    " tab stop at 8 space
 set list listchars=tab:..,trail:^,extends:>,precedes:<
-set spell spelllang=en_us
+" set spell spelllang=en_us
 
 " Highlights
-highlight CursorColumn ctermbg=235
+" highlight CursorColumn ctermbg=235
 highlight Pmenu ctermbg=darkgrey ctermfg=black
 highlight PmenuSel ctermbg=lightgrey ctermfg=blue
 highlight SpecialKey ctermfg=238 ctermbg=black
@@ -38,5 +38,3 @@ autocmd BufReadPost *
    \ if line("'\"") > 0 && line("'\"") <= line("$") |
    \     exe "normal g'\"" |
    \ endif
-
-colorscheme torte

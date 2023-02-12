@@ -86,7 +86,7 @@ highlight string ctermfg=196
 syntax match comment "//.*"
 syntax region comment_1 start="/\*" end="\*/"
 syntax region comment_1 start="#if \(0\|false\)" start="#else" end="#\(else\|endif\)"
-highlight comment ctermfg=238
+highlight comment ctermfg=8
 highlight link comment_1 comment
 
 " pointer
