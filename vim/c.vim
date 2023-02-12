@@ -122,7 +122,7 @@ highlight predef ctermfg=197
 
 " function
 syntax match symbol_func /##/ contained
-syntax match function "[a-zA-Z_]\(\w\|#\)*("he=e-1 contains=symbol_func
+syntax match function "[a-zA-Z_]\s?\(\w\|#\)*("he=e-1 contains=symbol_func
 highlight function ctermfg=33
 highlight symbol_func ctermfg=118
 
