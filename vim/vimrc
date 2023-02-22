@@ -25,6 +25,7 @@ set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=101
 set tabstop=8                    " tab stop at 8 space
 set list listchars=tab:..,trail:^,extends:>,precedes:<
+set mouse=n
 " set spell spelllang=en_us
 
 " Highlights
@@ -48,5 +49,6 @@ call plug#begin()
     Plug 'preservim/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+    Plug 'mileszs/ack.vim'
 call plug#end()
 map <C-n> :NERDTreeToggle<CR>
