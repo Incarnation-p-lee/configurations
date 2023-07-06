@@ -54,4 +54,5 @@ call plug#end()
 
 " Plug Configurations
 nmap ss <Plug>(easymotion-s2)
+nmap sn <Plug>(easymotion-sn)
 let g:rainbow_active = 1
