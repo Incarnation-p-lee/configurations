@@ -1,5 +1,6 @@
 syntax on
 
+set re=1
 set nocompatible                 " Disable the compatible for vi
 set showcmd                      " Show (partial) command in status line.
 set showmatch                    " Show matching brackets.
@@ -22,7 +23,7 @@ set shell=bash
 set backspace=start
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set foldmethod=marker            " zf% mark pair () [] {}
-set colorcolumn=101
+set colorcolumn=81
 set tabstop=8                    " tab stop at 8 space
 set list listchars=tab:..,trail:^,extends:>,precedes:<
 set mouse=n
@@ -46,9 +47,11 @@ autocmd BufReadPost *
 "    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " 2. In vim, type :PlugInstall for the installation.
 call plug#begin()
-    Plug 'preservim/nerdtree'
-    Plug 'vim-airline/vim-airline'
-    Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-    Plug 'mileszs/ack.vim'
+    Plug 'itchyny/lightline.vim'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'frazrepo/vim-rainbow'
 call plug#end()
-map <C-n> :NERDTreeToggle<CR>
+
+" Plug Configurations
+nmap ss <Plug>(easymotion-s2)
+let g:rainbow_active = 1
