@@ -24,7 +24,7 @@ syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8
 syntax keyword type uint64_t int64_t size_t 
 syntax keyword type size_t ssize_t false true asm inline
 syntax match type_def_0 / \w*_t$/
-syntax match type_def_1 /\w*_t[) ;]/he=e-1
+syntax match type_def_1 /\w*_t[) ;,]/he=e-1
 syntax match type_def_2 /^\w*_t$/
 highlight type ctermfg=40
 highlight link type_def_0 type
