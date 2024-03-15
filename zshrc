@@ -1,4 +1,5 @@
 export EDITOR=vi
+export PAGER="more"
 export ZSH="/home/pli/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
