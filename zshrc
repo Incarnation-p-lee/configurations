@@ -1,5 +1,6 @@
 export EDITOR=vi
-export PAGER="more"
+export PAGER="less"
+export LESS="-F -X -R"
 export ZSH="/home/pli/.oh-my-zsh"
 export LANG=en_US.UTF-8
 
