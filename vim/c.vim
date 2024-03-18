@@ -65,7 +65,7 @@ syntax match macro_defined /\<[A-Z_0-9]\+\>/
 highlight macro_defined ctermfg=226
 
 " structure & union & enum
-syntax match struct_inline contained /\(struct\|union\|enum\)\+\w*[ ),{]/hs=s+6,he=e-1
+syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*\([$ ),{]\|$\)/hs=s+6,he=e
 syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
 syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
@@ -154,4 +154,4 @@ highlight symbol ctermfg=118
 
 " :: class reference
 syntax match class_reference "::"
-highlight class_reference ctermfg=166
+highlight class_reference ctermfg=200
