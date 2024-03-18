@@ -21,22 +21,26 @@ let b:current_syntax = "c"
 syntax keyword type int double short float long unsigned signed char void
 syntax keyword type bool boolean uint16_t int16_t uint32_t int32_t
 syntax keyword type bool boolean uint16 sint16 uint32 sint32 uint64 sint64 uint8 sint8
-syntax keyword type uint64_t int64_t size_t 
+syntax keyword type uint64_t int64_t size_t
 syntax keyword type size_t ssize_t false true asm inline
 syntax match type_def_0 / \w*_t$/
 syntax match type_def_1 /\w*_t[) ;,]/he=e-1
 syntax match type_def_2 /^\w*_t$/
+syntax match type_def_3 /\w*_int[0-9]\+/
+syntax match type_def_4 /\w*_uint[0-9]\+/
 highlight type ctermfg=40
 highlight link type_def_0 type
 highlight link type_def_1 type
 highlight link type_def_2 type
+highlight link type_def_3 type
+highlight link type_def_4 type
 
 " keyword in C
 syntax keyword keyword_basic break case const continue default do else
 syntax keyword keyword_basic extern for goto if register restrict
 syntax keyword keyword_basic return sizeof static switch typedef
 syntax keyword keyword_basic volatile while auto
-highlight keyword_basic ctermfg=124
+highlight keyword_basic ctermfg=199
 
 setlocal iskeyword +=#
 " macro
@@ -58,14 +62,14 @@ highlight addressing ctermfg=196
 " \< -> \b
 " \> -> \b
 syntax match macro_defined /\<[A-Z_0-9]\+\>/
-highlight macro_defined ctermfg=130
+highlight macro_defined ctermfg=226
 
 " structure & union & enum
-syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*[ ),{]/hs=s+6,he=e-1
+syntax match struct_inline contained /\(struct\|union\|enum\)\+\w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
 syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
-highlight struct_inline ctermfg=64
+highlight struct_inline ctermfg=24
 highlight link enum_inline struct_inline
 highlight struct ctermfg=105
 highlight link struct_typedef struct
@@ -74,7 +78,7 @@ highlight link struct_typedef struct
 syntax match included contained /#include .*/hs=s+9
 syntax match include display /#include [<|"]/ contains=included
 highlight include ctermfg=89
-highlight included ctermfg=100
+highlight included ctermfg=96
 
 " string
 syntax match string_format contained /%#\?\d\{0,3\}\.\?\d\{0,3\}l\{0,2\}[a-zA-Z]/
@@ -109,7 +113,7 @@ syntax match operation " >>=\? "
 syntax match operation " <<=\? "
 syntax match operation " &&=\? "
 syntax match operation "--"
-highlight operation ctermfg=165
+highlight operation ctermfg=45
 
 " number
 syntax match number "[0-9]\+\.\?[0-9]*"
@@ -122,12 +126,12 @@ highlight predef ctermfg=197
 
 " function
 syntax match symbol_func /##/ contained
-syntax match function "[a-zA-Z_]\(\w\|#\)*\s\?("he=e-1 contains=symbol_func
+syntax match function "[a-zA-Z_:]\(\w\|#\)*\s\?("he=e-1 contains=symbol_func
 highlight function ctermfg=33
 highlight symbol_func ctermfg=118
 
 " label
-syntax match label "\w\+:"
+syntax match label "case \w\+:"he=e-1,hs=s+4
 highlight label ctermfg=49
 
 " tail space
@@ -148,3 +152,6 @@ highlight inline_assembly ctermfg=125
 syntax match symbol /##/
 highlight symbol ctermfg=118
 
+" :: class reference
+syntax match class_reference "::"
+highlight class_reference ctermfg=166
