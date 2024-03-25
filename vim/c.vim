@@ -66,6 +66,7 @@ highlight macro_defined ctermfg=226
 
 " structure & union & enum
 syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*\([$ ),{]\|$\)/hs=s+6,he=e
+" syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*[ ),{]/hs=s+6,he=e-1
 syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
 syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
@@ -98,7 +99,7 @@ syntax match pointer "\*\{1,3\}\w\+"
 syntax match pointer "&[(]\?\w\+"
 syntax match pointer "->\w\+"
 syntax match pointer "\.\w\+"
-highlight pointer ctermfg=202
+highlight pointer ctermfg=129
 
 " operation
 syntax match operation " [?:+=\-\*/&|~%^] "
@@ -113,7 +114,7 @@ syntax match operation " >>=\? "
 syntax match operation " <<=\? "
 syntax match operation " &&=\? "
 syntax match operation "--"
-highlight operation ctermfg=45
+highlight operation ctermfg=202
 
 " number
 syntax match number "[0-9]\+\.\?[0-9]*"
