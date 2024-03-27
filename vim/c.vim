@@ -65,9 +65,9 @@ syntax match macro_defined /\<[A-Z_0-9]\+\>/
 highlight macro_defined ctermfg=226
 
 " structure & union & enum
-syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*\([$ ),{]\|$\)/hs=s+6,he=e
+syntax match struct_inline contained /\(struct\|union\) \+\w*\([$ ),{]\|$\)/hs=s+6,he=e
 " syntax match struct_inline contained /\(struct\|union\|enum\) \+\w*[ ),{]/hs=s+6,he=e-1
-syntax match enum_inline contained /enum \+\w*[ ),{]/hs=s+4,he=e-1
+syntax match enum_inline contained /enum \+\w*\([$ ),{]\|$\)/hs=s+4,he=e
 syntax match struct /\(struct\|union\|enum\) \+[a-zA-Z_{]/he=e-1 contains=struct_inline,enum_inline
 syntax match struct_typedef /s_\w\+_t[; ]/he=e-1
 highlight struct_inline ctermfg=24
@@ -78,8 +78,8 @@ highlight link struct_typedef struct
 " include
 syntax match included contained /#include .*/hs=s+9
 syntax match include display /#include [<|"]/ contains=included
-highlight include ctermfg=89
-highlight included ctermfg=96
+highlight include ctermfg=66
+highlight included ctermfg=90
 
 " string
 syntax match string_format contained /%#\?\d\{0,3\}\.\?\d\{0,3\}l\{0,2\}[a-zA-Z]/
@@ -95,11 +95,11 @@ highlight comment ctermfg=8
 highlight link comment_1 comment
 
 " pointer
-syntax match pointer "\*\{1,3\}\w\+"
+syntax match pointer "\*\{1,3\}\s\?\w\+"
 syntax match pointer "&[(]\?\w\+"
 syntax match pointer "->\w\+"
 syntax match pointer "\.\w\+"
-highlight pointer ctermfg=129
+highlight pointer ctermfg=135
 
 " operation
 syntax match operation " [?:+=\-\*/&|~%^] "
@@ -117,9 +117,10 @@ syntax match operation "--"
 highlight operation ctermfg=202
 
 " number
-syntax match number "[0-9]\+\.\?[0-9]*"
-syntax match number "0x[0-9a-fA-F]\+"
-highlight number ctermfg=196
+syntax match number "\s[0-9]\+\.\?[0-9]*"hs=s+1
+syntax match number "\s0x[0-9a-fA-F]\+"hs=s+1
+syntax match number "\s0b[01]\+"hs=s+1
+highlight number ctermfg=117
 
 " Predefined macro
 syntax keyword predef NULL __FILE__ __LINE__ __FUNCTION__
@@ -154,5 +155,7 @@ syntax match symbol /##/
 highlight symbol ctermfg=118
 
 " :: class reference
-syntax match class_reference "::"
-highlight class_reference ctermfg=200
+syntax match class_separator contained "::"
+syntax match class_reference "\w\+::"he=e-2 contains=class_separator
+highlight class_separator ctermfg=200
+highlight class_reference ctermfg=44
