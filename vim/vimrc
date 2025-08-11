@@ -50,11 +50,30 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'easymotion/vim-easymotion'
-    Plug 'frazrepo/vim-rainbow'
+    Plug 'preservim/tagbar'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+" autocmd VimEnter * TagbarOpen
 
 " Plug Configurations
 nmap ss <Plug>(easymotion-s2)
 nmap sn <Plug>(easymotion-sn)
-let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:Lf_FuzzyMatch = 1
+let g:Lf_DefaultMode = 'FullPath'
+
+let mapleader = '\'
+
+nnoremap <silent> <leader>f :LeaderfFile<CR>
+nnoremap <silent> <leader>b :LeaderfBuffer<CR>
+nnoremap <silent> <leader>t :LeaderfTag<CR>
+nnoremap <silent> <leader>l :LeaderfLine<CR>
+
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
