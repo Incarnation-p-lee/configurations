@@ -26,7 +26,7 @@ set foldmethod=marker            " zf% mark pair () [] {}
 set colorcolumn=81
 set tabstop=8                    " tab stop at 8 space
 set list listchars=tab:..,trail:^,extends:>,precedes:<
-set mouse=n
+set mouse=
 " set spell spelllang=en_us
 
 " Highlights
@@ -77,3 +77,7 @@ nnoremap <silent> <leader>t :LeaderfTag<CR>
 nnoremap <silent> <leader>l :LeaderfLine<CR>
 
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+let &t_SR = "\e[4 q"
