@@ -61,7 +61,12 @@ call plug#begin()
     Plug 'preservim/tagbar'
     Plug 'airblade/vim-gitgutter'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-    Plug 'tpope/vim-dispatch'
+    Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    Plug 'bluz71/vim-moonfly-colors'
+    Plug 'tomasr/molokai'
+    Plug 'liuchengxu/space-vim-dark'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 " Plug Configurations
@@ -86,6 +91,72 @@ nnoremap <silent> <leader>l :LeaderfLine<CR>
 
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-let &t_SR = "\e[4 q"
+colorscheme space-vim-dark
+set termguicolors
+
+let b:current_syntax = "cpp.c"
+
+hi Normal guibg=#000000 ctermbg=0
+hi NonText guibg=#000000 ctermbg=0
+hi EndOfBuffer guibg=#000000 ctermbg=0
+hi SignColumn guibg=#000000 ctermbg=0
+hi FoldColumn guibg=#000000 ctermbg=0
+hi LineNr guibg=#000000 ctermbg=0
+hi CursorLineNr guibg=#000000 ctermbg=0
+
+autocmd VimEnter * call timer_start(200, {-> SetCustomizedHighlight()})
+autocmd FileType cpp call timer_start(100, {-> SetCustomizedHighlight()})
+
+function! SetCustomizedHighlight()
+  " Pointer
+  syntax match Pointer "\*\{1,3\}\s\?\w\+"
+  syntax match Pointer "&\{1,3\}\s\?\w\+"
+  syntax match Pointer "&[(]\?\w\+"
+  syntax match Pointer "->\w\+"
+  syntax match Pointer "\.\w\+"
+  hi Pointer guifg=#9932CC ctermfg=170 gui=bold cterm=bold
+
+  " Operator
+  syntax match Operator " [?:+=\-\*/&|~%^] "
+  syntax match Operator " [<>!] "
+  syntax match Operator " [<>!]= "
+  syntax match Operator " [+=\-\*/&|~]="
+  syntax match Operator " \(&&\|||\) "
+  syntax match Operator " \(&&\|||\)$"
+  syntax match Operator "!"
+  syntax match Operator "++"
+  syntax match Operator " >>=\? "
+  syntax match Operator " <<=\? "
+  syntax match Operator " &&=\? "
+  syntax match Operator "--"
+  hi Operator guifg=#FF0000 ctermfg=196 gui=bold cterm=bold
+
+  " Keyword Baisc
+  syntax keyword Keyword_basic break case const continue default do else
+  syntax keyword Keyword_basic extern for goto if register restrict
+  syntax keyword Keyword_basic return sizeof static switch typedef
+  syntax keyword Keyword_basic volatile while auto void
+  hi Keyword_basic guifg=#00ff00 ctermfg=10 gui=NONE cterm=NONE
+
+  " Keyword Advanced
+  syntax keyword Keyword_advanced template typename struct enum
+  syntax keyword Keyword_advanced class requires
+  hi Keyword_advanced guifg=#DA70D6 ctermfg=170 gui=NONE cterm=NONE
+
+  " Types
+  syntax keyword Types_builtin int char short vector set span optional
+  syntax keyword Types_builtin unsigned bool nullptr
+  syntax keyword Types_builtin uint8_t uint16_t uint32_t uint64_t
+  syntax keyword Types_builtin int8_t int16_t int32_t int64_t
+  hi Types_builtin guifg=#FFFF00 ctermfg=226 gui=bold cterm=bold
+
+  " MISC
+  hi String guifg=#D2691E ctermfg=166 gui=bold cterm=bold
+  hi Function guifg=#00bfff ctermfg=39
+  hi Comment ctermfg=244 guifg=#808080 gui=NONE cterm=NONE
+
+  " Template
+  syntax match Operator "<"
+  syntax match Operator ">"
+  hi Operator guifg=#FFA500 ctermfg=214 gui=bold cterm=bold
+endfunction
